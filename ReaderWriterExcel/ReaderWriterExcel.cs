@@ -17,9 +17,11 @@ namespace ReaderWriterExcel
         public static Worksheet input, result;
         public int heightBase, widthBase;
 
-        public List<T> ReadFromExcel<T>(List<T> inDatas, int sheetNumber)
+        public List<T> ReadFromExcel<T>(int sheetNumber)
         {
+            var inDatas = new List<T>();
             var worksheets = GetWorksheets();
+
             input = book.Sheets.Item[worksheets[sheetNumber]];
             heightBase = input.UsedRange.Rows.Count;
             widthBase = input.UsedRange.Columns.Count;

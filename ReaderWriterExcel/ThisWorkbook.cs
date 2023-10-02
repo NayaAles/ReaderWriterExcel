@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-
+﻿
 namespace ReaderWriterExcel
 {
     public partial class ThisWorkbook
     {
         public ReaderWriterExcel readerWriterExcel = new ReaderWriterExcel();
-        public List<InData> inDatas = new List<InData>();
 
         private void ThisWorkbook_Startup(object sender, System.EventArgs e)
         {
@@ -19,8 +17,8 @@ namespace ReaderWriterExcel
 
         public void Main()
         {
-            readerWriterExcel.ReadFromExcel(inDatas, 0);
-            readerWriterExcel.SaveToExcel(inDatas, 1);
+            var inDatas = readerWriterExcel.ReadFromExcel<InData>(0);
+            readerWriterExcel.SaveToExcel<InData>(inDatas, 1);
 
             ReaderWriterExcel.ExcelKill();
         }
